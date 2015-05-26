@@ -13,6 +13,13 @@ this a
 test
 ```
 
+### Preserve lines in file
+```
+while read CMD; do
+    echo "$CMD" | scuttlezanetti && echo
+done < "./input" > output
+```
+
 ## Node.js
 > npm install scuttlezanetti
 
