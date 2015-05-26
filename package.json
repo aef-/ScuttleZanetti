@@ -1,6 +1,6 @@
 {
   "name": "scuttlezanetti",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI and node.js library to access and remove stop words",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,9 @@
     "stop",
     "words"
   ],
+  "bin": {
+    "scuttlezanetti": "./bin/scuttlezanetti"
+  },
   "author": "aef-",
   "license": "MIT",
   "bugs": {

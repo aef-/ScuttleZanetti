@@ -4,6 +4,7 @@ CLI and node.js library to access and remove stop words
 # Examples
 ## CLI
 ```
+npm install -g scuttlezanetti
 > echo "this is a test" | scuttlezanetti
 test
 > echo "this is a test" | scuttlezanetti --stop-words test,is
@@ -13,6 +14,8 @@ test
 ```
 
 ## Node.js
+> npm install scuttlezanetti
+
 ```javascript
 var ScuttleZanetti = require( 'scuttlezanetti' ).api;
 var stopWords = require( 'scuttlezanetti' ).stopWords;
