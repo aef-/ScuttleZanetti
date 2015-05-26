@@ -16,7 +16,7 @@ var rs = new Readable;
 var write = concat( function( data ) {
   var scuttleZanetti = new ScuttleZanetti( {
     stopWords: stopWords,
-    tokenizePattern: tokenizePattern 
+    tokenizePattern: tokenizePattern ? new RegExp( tokenizePattern, 'g' ) : undefined
   } );
 
   rs.push( scuttleZanetti.removeStopWords( data.toString( ) ) );
