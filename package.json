@@ -1,0 +1,28 @@
+{
+  "name": "scuttlezanetti",
+  "version": "1.0.0",
+  "description": "CLI and node.js library to access and remove stop words",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aef-/ScuttleZanetti.git"
+  },
+  "keywords": [
+    "stopwords",
+    "stop",
+    "words"
+  ],
+  "author": "aef-",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aef-/ScuttleZanetti/issues"
+  },
+  "homepage": "https://github.com/aef-/ScuttleZanetti#readme",
+  "dependencies": {
+    "concat-stream": "^1.4.8",
+    "lodash": "^3.9.2"
+  }
+}

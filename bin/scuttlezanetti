@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+var concat = require( 'concat-stream' ),
+    ScuttleZanetti = require( '../index' ).api,
+    Readable = require( 'stream' ).Readable,
+    args = process.argv.slice( 2 );
+
+var tokenizePattern = getFlagValue( '--tokenize-pattern', { isSwitch: false } ) ||
+                      getFlagValue( '-t', { isSwitch: false } );
+    stopWords       = getFlagValue( '--stop-words', { isArray: true } ) ||
+                      getFlagValue( '-w', { isArray: true } );
+
+
+var rs = new Readable;
+
+var write = concat( function( data ) {
+  var scuttleZanetti = new ScuttleZanetti( {
+    stopWords: stopWords,
+    tokenizePattern: tokenizePattern 
+  } );
+
+  rs.push( scuttleZanetti.removeStopWords( data.toString( ) ) );
+  rs.push( null );
+  rs.pipe( process.stdout );
+} );
+
+process.stdin.setEncoding( 'utf8' );
+process.stdin.pipe( write );
+
+
+/**
+ * Gets flag values from command line arguments.
+ * @param {string} arg Name of the flag
+ * @param {object} opts
+ * @param {boolean} opts.isSwitch Does the flag return true if its present?
+ * @param {boolean} opts.isArray Does the flag expect a comma delimited list?
+ * @return {string|boolean|array}
+ * @private
+ */
+function getFlagValue( flag, opts ) {
+  var index = args.indexOf( flag );
+
+  if( opts.isSwitch )
+    return ~index ? true : false;
+
+  if( ~index )
+    if( opts.isArray )
+      return args[ index + 1 ].split( ',' );
+    else
+      return args[ index + 1 ]
+
+  return undefined;
+}
