@@ -13,13 +13,13 @@ test
 ```
 
 ## Node.js
-```
+```javascript
 var ScuttleZanetti = require( 'scuttlezanetti' ).api;
 var stopWords = require( 'scuttlezanetti' ).stopWords;
 
 var sz =  = new ScuttleZanetti( {
-  stopWords: stopWords //default
-  tokenizePattern: /W+/ //default
+  stopWords: stopWords,   //default
+  tokenizePattern: /W+/   //default
 } );
 
 sz.tokenize( "this is a test" ); //[ 'this', 'is', 'a', 'test' ]
