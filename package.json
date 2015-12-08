@@ -1,6 +1,6 @@
 {
   "name": "scuttlezanetti",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "CLI and node.js library to access and remove stop words",
   "main": "index.js",
   "scripts": {
