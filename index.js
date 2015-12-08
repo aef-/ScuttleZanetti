@@ -5,7 +5,6 @@ var WORDS = "a, about, above, across, after, again, against, all, almost, alone,
 var stopWords = WORDS.split( ", " );
 
 function ScuttleZanetti( options ) {
-  this.options = _.defaults( options, {
   this.options = _.defaults( { }, options, {
     tokenizePattern: undefined, 
     tokenizeMethod: function( s ) {
