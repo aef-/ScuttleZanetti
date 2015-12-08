@@ -6,6 +6,7 @@ var stopWords = WORDS.split( ", " );
 
 function ScuttleZanetti( options ) {
   this.options = _.defaults( options, {
+  this.options = _.defaults( { }, options, {
     tokenizePattern: undefined, 
     tokenizeMethod: function( s ) {
       return s.replace(/[^\w\s-]/, "").split( " " );

@@ -13,6 +13,13 @@ this a
 test
 ```
 
+### Preserve lines in file
+```
+while read CMD; do
+    echo "$CMD" | scuttlezanetti && echo
+done < "./input" > output
+```
+
 ## Node.js
 > npm install scuttlezanetti
 
@@ -22,7 +29,10 @@ var stopWords = require( 'scuttlezanetti' ).stopWords;
 
 var sz =  = new ScuttleZanetti( {
   stopWords: stopWords,   //default
-  tokenizePattern: /W+/   //default
+  tokenizePattern: undefined, //default
+  tokenizeMethod: function( s ) {
+    return s.replace(/[^\w\s-]/, "").split( " " );
+  } //default
 } );
 
 sz.tokenize( "this is a test" ); //[ 'this', 'is', 'a', 'test' ]
