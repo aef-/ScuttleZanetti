@@ -6,7 +6,10 @@ var stopWords = WORDS.split( ", " );
 
 function ScuttleZanetti( options ) {
   this.options = _.defaults( options, {
-    tokenizePattern: /\W+/,
+    tokenizePattern: undefined, 
+    tokenizeMethod: function( s ) {
+      return s.replace(/[^\w\s-]/, "").split( " " );
+    },
     stopWords: stopWords 
   } ); 
 }
@@ -19,7 +22,12 @@ ScuttleZanetti.prototype.removeStopWords = function( s ) {
 };
 
 ScuttleZanetti.prototype.tokenize = function( s ) {
-  var results = s.split(this.options.tokenizePattern);
+  var results;
+  if( this.options.tokenizePattern )
+    results = s.split(this.options.tokenizePattern);
+  else
+    results = this.options.tokenizeMethod( s );
+
   return _.without(results,'',' ');
 };
 
