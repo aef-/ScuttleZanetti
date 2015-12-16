@@ -6,6 +6,7 @@ var stopWords = WORDS.split( ", " );
 
 function ScuttleZanetti( options ) {
   this.options = _.defaults( { }, options, {
+    inverse: false,
     tokenizePattern: undefined, 
     tokenizeMethod: function( s ) {
       return s.replace(/[^\w\s-]/, "").split( " " );
@@ -17,7 +18,8 @@ function ScuttleZanetti( options ) {
 ScuttleZanetti.prototype.removeStopWords = function( s ) {
   var tokens = this.tokenize( s.toLowerCase( ) );
   return _.filter( tokens, function( w ) {
-    return !~this.options.stopWords.indexOf( w ); 
+    const found = ~this.options.stopWords.indexOf( w ); 
+    return !this.options.inverse ? !found : found;
   }.bind( this ) ).join( " " );
 };
 
