@@ -26,6 +26,6 @@
   "homepage": "https://github.com/aef-/ScuttleZanetti#readme",
   "dependencies": {
     "concat-stream": "^1.4.8",
-    "lodash": "^3.9.2"
+    "lodash": "^4.17.12"
   }
 }
